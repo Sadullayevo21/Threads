@@ -21,6 +21,10 @@ This project contains **10 practical examples** of multithreading, synchronizati
 
 ---
 
+## Preview
+
+![Gif](assets/gif.gif)
+
 ## 🛠️ How to Run
 
 1. Make sure you have **.NET SDK** installed.
@@ -28,3 +32,4 @@ This project contains **10 practical examples** of multithreading, synchronizati
 
 ```bash
 dotnet run
+
