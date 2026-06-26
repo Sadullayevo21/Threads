@@ -14,13 +14,10 @@ public static class Task10
         {
             int customerId = i; 
 
-            Thread thread = new Thread(() => BuyTickets($"Mijoz {customerId}"));
+            Thread thread = new Thread(() => BuyTickets($"Customer {customerId}"));
             customers.Add(thread);
-        }
 
-        for (int i = 0; i < customers.Count; i++)
-        {
-            customers[i].Start(); 
+            thread.Start();
         }
 
         for (int i = 0; i < customers.Count; i++)
@@ -32,18 +29,18 @@ public static class Task10
     private static void BuyTickets(string customerName)
     {
         Random random = new Random();
-        int ticketsToBuy = random.Next(1, 11); 
+        int tickets = random.Next(1, 11); 
 
         lock (locker)
         {
-            if (totalTickets >= ticketsToBuy)
+            if (totalTickets >= tickets)
             {
-                totalTickets -= ticketsToBuy;
-                Console.WriteLine($"{customerName}: {ticketsToBuy} ta bilet sotib oldi. (Qoldi: {totalTickets})");
+                totalTickets -= tickets;
+                Console.WriteLine($"{customerName}: has bought {tickets} tickets  (Left: {totalTickets})");
             }
             else
             {
-                Console.WriteLine($"{customerName}: Xarid muvaffaqiyatsiz! {ticketsToBuy} ta bilet so'radi, lekin {totalTickets} ta qolgan.");
+                Console.WriteLine($"{customerName}: Purchase unsuccessful! {tickets} asked for, but {totalTickets} left.");
             }
         }
     }
